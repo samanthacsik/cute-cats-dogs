@@ -1,0 +1,111 @@
+---
+title: "Are dogs or cats cuter?"
+subtitle: "A very important report"
+author: "Sam Csik"
+date: "August 3, 2023"
+format: 
+  html:
+    toc: true
+    toc-location: left
+
+execute: 
+  eval: true
+  echo: false
+  message: false
+  warning: false
+  
+editor_options: 
+  chunk_output_type: console
+---
+
+## Background information
+
+Dogs are so cute, but so are cats. We set out to collect evidence to determine once and for all which are the cutest.
+
+```{r}
+#| layout-ncol: 2
+#| out-width: "50%"
+#| fig-subcap: 
+#|  - "**Exhibit A:** A cute dog"
+#|  - "**Exhibit B:** Two cute cats"
+knitr::include_graphics("images/dog.jpeg")
+knitr::include_graphics("images/cats.jpeg")
+```
+
+## Data collection
+
+In the most scientific approach possible, we surveyed experts in the field of cute animals on Slack. I posed the question,
+
+> `@channel` this is very important (I need some data for a demo) -- plz react to this message with a 🐱 or a 🐶 indicating which you believe to be the cuter animal ❤️
+
+on Friday, June 23, 2023 at 11:45 PT in two Slack workspaces:
+
+1. the `#cuteness` channel of the **NCEAS** workspace (response rate 19/33)
+2. the `#general` channel of the **MEDS Alum** workspace (response rate 16/61)
+
+Because this is nearly an impossible ask of anyone, respondents were allowed to vote twice if they so desired.
+
+Votes were recorded until ___.
+
+## Results
+
+```{r}
+# load packages ----
+library(tidyverse)
+library(DT)
+
+# load data ----
+cuteness <- tribble(
+  ~slack_workspace, ~species, ~votes,
+  "NCEAS", "dog", 15, 
+  "NCEAS", "cat", 6, 
+  "MEDS Alum", "dog", 13,
+  "MEDS Alum", "cat", 5
+)
+
+total <- cuteness |> 
+  summarize(n = sum(votes)) |> 
+  pull()
+```
+
+A total of `r total` votes were recorded.
+
+```{r}
+datatable(cuteness,
+          options = list(dom = 'ltp', lengthChange = FALSE))
+```
+
+Respondents in the NCEAS and MEDS Alum Slack workspaces both ranked dogs as cuter than cats.
+
+```{r}
+cuteness_wrangled <- cuteness |> 
+  mutate(slack_workspace = fct_relevel(slack_workspace, c("NCEAS", "MEDS Alum")),
+         species = fct_relevel(species, c("dog", "cat"))) |> 
+  group_by(slack_workspace) 
+
+ggplot(data = cuteness_wrangled, aes(x = slack_workspace, y = votes, fill = species)) + 
+  geom_col(position = "dodge") + 
+  scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
+  labs(x = "Survey Group", y = "Number of votes", fill = "Species") +
+  theme_minimal()
+
+# totals_by_spp <- cuteness_wrangled |> 
+#   ungroup() |> 
+#   group_by(species)
+# 
+# ggplot(data = totals_by_spp, aes(x = species, y = votes, fill = species)) + 
+#   geom_col() + 
+#   scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
+#   labs(x = "Species", y = "Number of votes", fill = "Species") +
+#   theme_minimal()
+```
+
+
+## In Summary
+
+Despite our rigorous approach to data collection and analysis, there is simply no way to actually determine whether dogs or cats are cuter (I mean...look at those faces!!). For now (and forever), this one will remain a draw.
+
+```{r}
+knitr::include_graphics("images/cute_fam.jpeg")
+```
+
