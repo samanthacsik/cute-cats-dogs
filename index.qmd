@@ -3,10 +3,14 @@ title: "Are dogs or cats cuter?"
 subtitle: "A very important report"
 author: "Sam Csik"
 date: "August 3, 2023"
+
 format: 
   html:
     toc: true
     toc-location: left
+    theme: 
+      #- morph
+      - styles.scss
 
 execute: 
   eval: true
@@ -87,7 +91,11 @@ ggplot(data = cuteness_wrangled, aes(x = slack_workspace, y = votes, fill = spec
   geom_col(position = "dodge") + 
   scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
   labs(x = "Survey Group", y = "Number of votes", fill = "Species") +
-  theme_minimal()
+  theme_minimal() 
+  #  theme(
+  #    panel.background = element_rect(fill = "transparent"),
+  #    plot.background = element_rect(fill = "transparent")
+  # )
 
 # totals_by_spp <- cuteness_wrangled |> 
 #   ungroup() |> 
