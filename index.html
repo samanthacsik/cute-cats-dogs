@@ -58,7 +58,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#background-information" id="toc-background-information" class="nav-link active" data-scroll-target="#background-information">Background information</a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods">Methods</a>
+  <ul class="collapse">
   <li><a href="#data-collection" id="toc-data-collection" class="nav-link" data-scroll-target="#data-collection">Data collection</a></li>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
+  <li><a href="#disclaimer" id="toc-disclaimer" class="nav-link" data-scroll-target="#disclaimer">Disclaimer</a></li>
+  </ul></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
   <li><a href="#in-summary" id="toc-in-summary" class="nav-link" data-scroll-target="#in-summary">In Summary</a></li>
   </ul>
@@ -122,34 +127,52 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="data-collection" class="level2">
-<h2 class="anchored" data-anchor-id="data-collection">Data collection</h2>
+<section id="methods" class="level2">
+<h2 class="anchored" data-anchor-id="methods">Methods</h2>
+<section id="data-collection" class="level3">
+<h3 class="anchored" data-anchor-id="data-collection">Data collection</h3>
 <p>In the most scientific approach possible, we surveyed experts in the field of cute animals on Slack. I posed the question,</p>
 <blockquote class="blockquote">
 <p><code>@channel</code> this is very important (I need some data for a demo) – plz react to this message with a 🐱 or a 🐶 indicating which you believe to be the cuter animal ❤️</p>
 </blockquote>
-<p>on Friday, June 23, 2023 at 11:45 PT in two Slack workspaces:</p>
+<p>on Friday, June 23, 2023 at 11:45 PT in two Slack workspaces (survey groups):</p>
 <ol type="1">
-<li>the <code>#cuteness</code> channel of the <strong>NCEAS</strong> workspace (response rate 19/33)</li>
-<li>the <code>#general</code> channel of the <strong>MEDS Alum</strong> workspace (response rate 16/61)</li>
+<li>the <code>#cuteness</code> channel of the <strong>NCEAS</strong> workspace</li>
+<li>the <code>#general</code> channel of the <strong>MEDS Alum</strong> workspace</li>
 </ol>
-<p>Because this is nearly an impossible ask of anyone, respondents were allowed to vote twice if they so desired.</p>
+<p>Because this is a nearly impossible ask of anyone, respondents were allowed to vote twice if they so desired.</p>
 <p>Votes were recorded until ___.</p>
+</section>
+<section id="analysis" class="level3">
+<h3 class="anchored" data-anchor-id="analysis">Analysis</h3>
+<p>Total votes for dogs vs.&nbsp;cats in each survey group were first compared. If there was a difference in the number of votes for dogs vs.&nbsp;cats within either of the survey groups, we thought hard about how that would make the “less” cute animal feel, told them that they were in fact the cutest little baby(ies) in the whole world, and adjusted votes accordingly.</p>
+</section>
+<section id="disclaimer" class="level3">
+<h3 class="anchored" data-anchor-id="disclaimer">Disclaimer</h3>
+<p>No animals (or their feelings) were harmed in this study.</p>
+</section>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>A total of 39 votes were recorded.</p>
+<p>A total of 48 votes were recorded with a response rate of 25/33 for the NCEAS Slack workspace and 23/61 for the MEDS Alum Slack workspace.</p>
 <div class="cell">
 <div class="cell-output-display">
 
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-59823d99bbcc9a6f2059" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-59823d99bbcc9a6f2059">{"x":{"filter":"none","vertical":false,"data":[["1","2","3","4"],["NCEAS","NCEAS","MEDS Alum","MEDS Alum"],["dog","cat","dog","cat"],[15,6,13,5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>slack_workspace<\/th>\n      <th>species<\/th>\n      <th>votes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ltp","lengthChange":false,"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-2b8f6ed3fb322c5b3039" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-2b8f6ed3fb322c5b3039">{"x":{"filter":"none","vertical":false,"caption":"<caption style=\"caption-side: top; text-align: left;\">\n  <strong>Table 1: <\/strong>\n  <em>Total votes for dogs vs. cats within each survey group.<\/em>\n<\/caption>","data":[["1","2","3","4"],["NCEAS","NCEAS","MEDS Alum","MEDS Alum"],["dog","cat","dog","cat"],[19,6,16,7]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>slack_workspace<\/th>\n      <th>species<\/th>\n      <th>votes<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ltp","lengthChange":false,"paging":false,"columnDefs":[{"className":"dt-right","targets":3},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
+<p><br></p>
 <p>Respondents in the NCEAS and MEDS Alum Slack workspaces both ranked dogs as cuter than cats.</p>
 <div class="cell">
 <div class="cell-output-display">
 <p><img src="index_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Because we simply could not allow for this, we gave cats an additional 13 votes for the NCEAS survey group and an additional 9 votes for the MEDS Alum survey group.</p>
+<div class="cell">
+<div class="cell-output-display">
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 </section>

@@ -36,20 +36,30 @@ knitr::include_graphics("images/dog.jpeg")
 knitr::include_graphics("images/cats.jpeg")
 ```
 
-## Data collection
+## Methods
+
+### Data collection
 
 In the most scientific approach possible, we surveyed experts in the field of cute animals on Slack. I posed the question,
 
 > `@channel` this is very important (I need some data for a demo) -- plz react to this message with a 🐱 or a 🐶 indicating which you believe to be the cuter animal ❤️
 
-on Friday, June 23, 2023 at 11:45 PT in two Slack workspaces:
+on Friday, June 23, 2023 at 11:45 PT in two Slack workspaces (survey groups):
 
-1. the `#cuteness` channel of the **NCEAS** workspace (response rate 19/33)
-2. the `#general` channel of the **MEDS Alum** workspace (response rate 16/61)
+1. the `#cuteness` channel of the **NCEAS** workspace 
+2. the `#general` channel of the **MEDS Alum** workspace
 
-Because this is nearly an impossible ask of anyone, respondents were allowed to vote twice if they so desired.
+Because this is a nearly impossible ask of anyone, respondents were allowed to vote twice if they so desired.
 
 Votes were recorded until ___.
+
+### Analysis
+
+Total votes for dogs vs. cats in each survey group were first compared. If there was a difference in the number of votes for dogs vs. cats within either of the survey groups, we thought hard about how that would make the "less" cute animal feel, told them that they were in fact the cutest little baby(ies) in the whole world, and adjusted votes accordingly.
+
+### Disclaimer
+
+No animals (or their feelings) were harmed in this study.
 
 ## Results
 
@@ -61,32 +71,54 @@ library(DT)
 # load data ----
 cuteness <- tribble(
   ~slack_workspace, ~species, ~votes,
-  "NCEAS", "dog", 15, 
+  "NCEAS", "dog", 19, 
   "NCEAS", "cat", 6, 
-  "MEDS Alum", "dog", 13,
-  "MEDS Alum", "cat", 5
+  "MEDS Alum", "dog", 16,
+  "MEDS Alum", "cat", 7
 )
+
+# calcualte total votes (used in-line, below) ----
+nceas_total <- cuteness |> 
+  filter(slack_workspace == "NCEAS") |> 
+  summarize(n = sum(votes)) |> 
+  pull()
+
+meds_total <- cuteness |> 
+  filter(slack_workspace == "MEDS Alum") |> 
+  summarize(n = sum(votes)) |> 
+  pull()
 
 total <- cuteness |> 
   summarize(n = sum(votes)) |> 
   pull()
 ```
 
-A total of `r total` votes were recorded.
+A total of `r total` votes were recorded with a response rate of `r nceas_total`/33 for the NCEAS Slack workspace and `r meds_total`/61 for the MEDS Alum Slack workspace.
 
 ```{r}
+# create datatable ----
 datatable(cuteness,
-          options = list(dom = 'ltp', lengthChange = FALSE))
+          caption = htmltools::tags$caption(
+            style = 'caption-side: top; text-align: left;',
+            htmltools::strong('Table 1: '), 
+            htmltools::em('Total votes for dogs vs. cats within each survey group.')),
+          options = list(dom = 'ltp', 
+                         lengthChange = FALSE,
+                         paging = FALSE))
 ```
+
+<br>
 
 Respondents in the NCEAS and MEDS Alum Slack workspaces both ranked dogs as cuter than cats.
 
 ```{r}
+# wrangle ----
 cuteness_wrangled <- cuteness |> 
   mutate(slack_workspace = fct_relevel(slack_workspace, c("NCEAS", "MEDS Alum")),
          species = fct_relevel(species, c("dog", "cat"))) |> 
   group_by(slack_workspace) 
 
+# plot ----
 ggplot(data = cuteness_wrangled, aes(x = slack_workspace, y = votes, fill = species)) + 
   geom_col(position = "dodge") + 
   scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
@@ -96,18 +128,60 @@ ggplot(data = cuteness_wrangled, aes(x = slack_workspace, y = votes, fill = spec
   #    panel.background = element_rect(fill = "transparent"),
   #    plot.background = element_rect(fill = "transparent")
   # )
-
-# totals_by_spp <- cuteness_wrangled |> 
-#   ungroup() |> 
-#   group_by(species)
-# 
-# ggplot(data = totals_by_spp, aes(x = species, y = votes, fill = species)) + 
-#   geom_col() + 
-#   scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
-#   labs(x = "Species", y = "Number of votes", fill = "Species") +
-#   theme_minimal()
 ```
 
+```{r}
+# function to calculate difference in votes for dogs vs. cats within each survey group ----
+diff_votes <- function(survey_group){
+  
+  dog <- cuteness |> 
+    filter(slack_workspace == survey_group,
+           species == "dog") |> 
+    select(votes) |> 
+    pull()
+
+  cat <- cuteness |> 
+    filter(slack_workspace == survey_group,
+           species == "cat") |> 
+    select(votes) |> 
+    pull()
+
+  diff <- dog - cat
+  
+  return(diff)
+
+}
+
+# calculate difference in votes ----
+nceas_diff <- diff_votes(survey_group = "NCEAS")
+meds_diff <- diff_votes(survey_group = "MEDS Alum")
+```
+
+Because we simply could not allow for this, we gave cats an additional `r nceas_diff` votes for the NCEAS survey group and an additional `r meds_diff` votes for the MEDS Alum survey group.
+
+```{r}
+# load revised data ----
+cuteness_revised <- tribble(
+  ~slack_workspace, ~species, ~votes,
+  "NCEAS", "dog", 19, 
+  "NCEAS", "cat", 19, 
+  "MEDS Alum", "dog", 15,
+  "MEDS Alum", "cat", 15
+)
+
+# wrangle ----
+cuteness_revised_wrangled <- cuteness_revised |> 
+  mutate(slack_workspace = fct_relevel(slack_workspace, c("NCEAS", "MEDS Alum")),
+         species = fct_relevel(species, c("dog", "cat"))) |> 
+  group_by(slack_workspace) 
+
+# plot ----
+ggplot(data = cuteness_revised_wrangled, aes(x = slack_workspace, y = votes, fill = species)) + 
+  geom_col(position = "dodge") + 
+  scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
+  labs(x = "Survey Group", y = "Number of votes", fill = "Species") +
+  theme_minimal() 
+```
 
 ## In Summary
 
