@@ -8,9 +8,9 @@ format:
   html:
     toc: true
     toc-location: left
-    theme: 
-      #- morph
-      - styles.scss
+    #theme: 
+      #- minty
+      #- styles_Key.scss
 
 execute: 
   eval: true
@@ -124,10 +124,6 @@ ggplot(data = cuteness_wrangled, aes(x = slack_workspace, y = votes, fill = spec
   scale_fill_manual(values = c("#84A59D", "#F6BD60")) +
   labs(x = "Survey Group", y = "Number of votes", fill = "Species") +
   theme_minimal() 
-  #  theme(
-  #    panel.background = element_rect(fill = "transparent"),
-  #    plot.background = element_rect(fill = "transparent")
-  # )
 ```
 
 ```{r}
