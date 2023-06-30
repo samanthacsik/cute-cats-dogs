@@ -1,0 +1,46 @@
+/*-- scss:rules --*/
+
+/* style level one headers */
+h1 {
+  background-color: #49bf96;
+  border-radius: 25px;
+  letter-spacing: 5px;
+  text-align: center;
+}
+
+/* purple italicized hyperlinks */
+a {
+  color: purple;
+  font-style: italic;
+}
+
+/* unvisited link 
+a:link {
+  color: red;
+}*/
+
+/* visited link 
+a:visited {
+  color: green;
+}*/
+
+/* mouse over link 
+a:hover {
+  color: hotpink;
+}*/
+
+/* selected link 
+a:active {
+  color: blue;
+}*/
+
+/* blue text */
+.blue-text {
+  color: blue;
+}
+
+/* large red text */
+.important-text{
+  color: red;
+  font-size: 30px;
+}
