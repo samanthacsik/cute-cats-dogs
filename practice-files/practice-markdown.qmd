@@ -1,7 +1,3 @@
----
-theme: practice-styles-KEY.css
----
-
 # Here is my level one header
 
 [Here is my first paragraph]{.blue-text}

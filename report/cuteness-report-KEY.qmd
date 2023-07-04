@@ -8,6 +8,8 @@ format:
   html:
     toc: true
     toc-location: left
+    theme: 
+      - my-report-styles.scss
     
 execute: 
   eval: true
@@ -183,4 +185,4 @@ knitr::include_graphics("images/cute_fam.jpeg")
 
 <br>
 
-Explore our analysis on [{{< fa brands github >}} GitHub](https://github.com/samanthacsik/cute-cats-dogs). If you have suggestions on how to improve this report, please [file an issue](https://github.com/samanthacsik/cute-cats-dogs/issues).
+<p class="large-text highlight-text center-text">Explore our analysis on [{{< fa brands github >}} GitHub](https://github.com/samanthacsik/cute-cats-dogs). If you have suggestions on how to improve this report, please [file an issue](https://github.com/samanthacsik/cute-cats-dogs/issues).</p>
