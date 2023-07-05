@@ -23,8 +23,8 @@ If you'd like to follow along during the workshop, please be sure to complete th
 |  └── practice-markdown.qmd   # example markdown file
 |  └── practice-styles.css     # a blank stylesheet for writing CSS, which will be applied to `practice-html.html` & `practice-markdown.md`
 |
-├── report/                    # files for building an example report
-|  └── cuteness-report.qmd     # a Quarto markdown "report" to practice styling
+├── report/                    # files for building & example report
+|  └── cuteness-report.qmd     # a Quarto markdown "report" to style
 |  └── images/                 # images of cute animals, which are rendered in `cuteness-report.qmd`
 |  └── _extensions/            # a folder of Quarto extensions, which includes the Font Awesome Extension for rendering fa icons
 |
