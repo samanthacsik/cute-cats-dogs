@@ -1,8 +1,8 @@
 # Materials for the August 3, 2023 NCEAS Roundtable
 
-## Setup
-
 This repository contains materials that accompany the talk/workshop, **Just enough CSS (and Sass) for data scientists** ([slides](https://samanthacsik.github.io/just-enough-css-sass/#/title-slide)).
+
+## Setup
 
 If you'd like to follow along during the workshop, please be sure to complete the following: 
 
