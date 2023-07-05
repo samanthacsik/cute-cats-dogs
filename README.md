@@ -11,7 +11,7 @@ If you'd like to follow along during the workshop, please be sure to complete th
 3. grab workshop materials by either forking/cloning or downloading the repo. You can find instructions for both options, below:
 
 - If you **don't** have git/GitHub configured: [Instructions for downloading the GitHub repository to work locally](https://github.com/samanthacsik/cute-cats-dogs/wiki/Download-the-GitHub-repository-to-work-locally)
-- If you **do** have git/GitHub configured: [Instructions for forking & cloning a GitHub respository](https://github.com/samanthacsik/cute-cats-dogs/wiki/Forking-&-Cloning-a-GitHub-respository)
+- If you **do** have git/GitHub configured: [Instructions for forking & cloning the GitHub respository](https://github.com/samanthacsik/cute-cats-dogs/wiki/Forking-&-Cloning-a-GitHub-respository)
 
 ## What's in this repo?
 
