@@ -8,7 +8,7 @@ If you'd like to follow along during the workshop, please be sure to complete th
 
 1. install [R](https://cloud.r-project.org/) and [RStudio](https://posit.co/products/open-source/rstudio/) – I’ll be using RStudio, though you may use alternative IDEs (e.g. VS Code) if that’s where you’re most comfortable
 2. install [Quarto](https://quarto.org/docs/get-started/) – this may require updating R/RStudio if you already have those installed; Quarto now comes packaged with RStudio, so a separate install is not required if you're installing RStudio for the first time
-3. grab workshop materials by either forking/cloning or downloading the repo. You can find instructions for both options, below:
+3. grab workshop materials by either forking/cloning or downloading this repo. You can find instructions for both options, below:
 
 - If you **don't** have git/GitHub configured: [Instructions for downloading the GitHub repository to work locally](https://github.com/samanthacsik/cute-cats-dogs/wiki/Download-the-GitHub-repository-to-work-locally)
 - If you **do** have git/GitHub configured: [Instructions for forking & cloning the GitHub respository](https://github.com/samanthacsik/cute-cats-dogs/wiki/Forking-&-Cloning-a-GitHub-respository)
