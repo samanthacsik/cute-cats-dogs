@@ -1,7 +1,7 @@
 # Here is my level one header
 
-[Here is my first paragraph]{.blue-text}
+Here is my first paragraph
 
 Here is my second paragraph, where you can read more about NCEAS [Roundtables](https://www.nceas.ucsb.edu/roundtable).
 
-[This is [very]{.blue-text} important text!]{.important-text}
+This is very important text!
